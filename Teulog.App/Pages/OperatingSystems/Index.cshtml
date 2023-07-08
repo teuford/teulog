@@ -1,0 +1,45 @@
+﻿@page
+
+@using Teulog.App.Pages.OperatingSystems
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using OperatingSystem = Teulog.App.Entities.OperatingSystem
+@model IndexModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.OperatingSystems[0].Title)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (OperatingSystem system in Model.OperatingSystems)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => system.Title)</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@system.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@system.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@system.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
